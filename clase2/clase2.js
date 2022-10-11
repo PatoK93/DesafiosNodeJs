@@ -17,11 +17,7 @@ class Usuario {
   }
 
   countMascotas() {
-    return this.mascotas.length;
-  }
-
-  getCantidadMascotas(cantMascotas) {
-    return console.log(`Tiene ${cantMascotas} mascotas`);
+    return console.log(`Tiene ${this.mascotas.length} mascotas`);
   }
 
   addBook(nombre, autor) {
@@ -32,15 +28,9 @@ class Usuario {
   }
 
   getBookNames() {
-    let arrayNombreLibros = [];
-    this.libros.forEach((libro) => arrayNombreLibros.push(libro.nombre));
-    return arrayNombreLibros;
-  }
-
-  showBookNames(nombreLibros) {
-    nombreLibros.forEach((nombre) => {
-      console.log(`El nombre del libro es: ${nombre}`);
-    });
+    return console.log(
+      `El nombre del libro es: ${this.libros.map((book) => book.nombre)}`
+    );
   }
 }
 
@@ -58,8 +48,6 @@ const usuario = new Usuario(
 
 usuario.getFullName();
 usuario.addMascota("hamster");
-let cantMascotas = usuario.countMascotas();
-usuario.getCantidadMascotas(cantMascotas);
+usuario.countMascotas();
 usuario.addBook("Harry Potter", "J.K.Rowling");
-let arrayNombreLibros = usuario.getBookNames();
-usuario.showBookNames(arrayNombreLibros);
+usuario.getBookNames();

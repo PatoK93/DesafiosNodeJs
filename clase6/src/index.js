@@ -1,24 +1,9 @@
-class Contenedor {
-  constructor(fileName) {
-    this.fileName = fileName;
-  }
+import { Contenedor } from "./Contenedor.js";
+import express from "express";
 
-  getAll() {
-    try {
-      const data = fs.readFileSync(this.fileName, "utf-8");
-      return JSON.parse(data);
-    } catch (error) {
-      console.log("Problemas al traer los productos del archivo!", error);
-    }
-  }
-}
-
-const fs = require("fs");
-const fileName = "productos.json";
+const fileName = "../productos.json";
 const file = new Contenedor(fileName);
 
-const express = require("express");
-const path = require("path");
 const app = express();
 const puerto = 8080;
 
@@ -30,9 +15,9 @@ server.on("error", (error) => {
   console.log("Error en el servidor!", error);
 });
 
-app.get("/productos", (req, res) => {
+app.get("/productos", async (req, res) => {
   try {
-    let products = file.getAll();
+    let products = await file.getAll();
 
     if (products.length == 0) {
       res.json({
@@ -48,9 +33,9 @@ app.get("/productos", (req, res) => {
   }
 });
 
-app.get("/productoRandom", (req, res) => {
+app.get("/productoRandom", async (req, res) => {
   try {
-    let products = file.getAll();
+    let products = await file.getAll();
 
     if (products.length == 0) {
       res.json({
