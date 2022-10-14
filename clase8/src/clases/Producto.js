@@ -1,9 +1,9 @@
 class Producto {
   constructor(id, titulo, precio, miniatura) {
-    this.id = id;
-    this.titulo = titulo;
-    this.precio = precio;
-    this.miniatura = miniatura;
+    this.id = id || null;
+    this.titulo = titulo || null;
+    this.precio = precio || null;
+    this.miniatura = miniatura || null;
   }
 
   getById(id, arrayProductos) {
@@ -33,7 +33,7 @@ class Producto {
       };
 
       arrayProductos.push(nuevoProdcuto);
-      return nuevoProdcuto;
+      return arrayProductos;
     } catch (error) {
       throw new Error(
         "Hubo un problema al guardar el producto solicitado!",

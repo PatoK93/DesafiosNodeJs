@@ -4,24 +4,26 @@ const Producto = require("../clases/Producto");
 
 const arrayProductos = [
   new Producto(
-    1,
+    "1",
     "auto",
     100,
     "https://img.freepik.com/vector-premium/ilustracion-dibujos-animados-sedan-azul-coche-generico-objeto-color-vehiculo-transporte-auto-contemporaneo-transporte-personal-moderno-automovil-urbano-sobre-fondo-blanco_151150-2409.jpg?w=2000"
   ),
   new Producto(
-    2,
+    "2",
     "moto",
     200,
     "https://img.freepik.com/vector-gratis/ilustracion-motocicleta-color-rojo_1308-35859.jpg?w=2000&t=st=1665714076~exp=1665714676~hmac=154aad3cdb7fd71c793d80f3a85f905f4ec3d551e93fadf10ba36286b201b786"
   ),
   new Producto(
-    3,
+    "3",
     "camion",
     300,
     "https://img.freepik.com/vector-gratis/camion-reparto-caja-grande_1284-44424.jpg?w=1380&t=st=1665714104~exp=1665714704~hmac=a0717b4f1a05e301cfa488e81b49862f6e50af715786b469f3e42ac27012fd2a"
   ),
 ];
+
+const productoObj = new Producto();
 
 router.get("/", (req, res) => {
   res.status(200).json({
@@ -37,8 +39,10 @@ router.get("/:id", (req, res) => {
       });
     }
     const id = parseInt(req.params.id);
-    let producto = Producto.getById(id, arrayProductos);
-    res.status(200).json({
+    const producto = productoObj.getById(id, arrayProductos);
+    console.log(id);
+    console.log(producto);
+    return res.status(200).json({
       producto,
     });
   } catch (error) {
@@ -69,9 +73,9 @@ router.post("/", (req, res) => {
         error: "Datos inválidos!",
       });
     }
-    let producto = Producto.saveProduct(body, arrayProductos);
+    let productos = productoObj.saveProduct(body, arrayProductos);
     return res.status(200).json({
-      producto,
+      productos,
     });
   } catch (error) {
     return res.status(400).json({
