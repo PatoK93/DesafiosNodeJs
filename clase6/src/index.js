@@ -1,7 +1,7 @@
-import { Contenedor } from "./Contenedor.js";
-import express from "express";
+const Contenedor = require("./Contenedor.js");
+const express = require("express");
 
-const fileName = "../productos.json";
+const fileName = "productos.json";
 const file = new Contenedor(fileName);
 
 const app = express();
