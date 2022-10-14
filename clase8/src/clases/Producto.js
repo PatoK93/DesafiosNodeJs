@@ -33,7 +33,7 @@ class Producto {
       };
 
       arrayProductos.push(nuevoProdcuto);
-      return arrayProductos;
+      return nuevoProdcuto;
     } catch (error) {
       throw new Error(
         "Hubo un problema al guardar el producto solicitado!",
@@ -42,15 +42,20 @@ class Producto {
     }
   }
 
-  updateProduct(body, arrayProductos) {
+  updateProduct(id, body, arrayProductos) {
+    let flagUpdate = false;
     try {
       arrayProductos.forEach((producto) => {
-        if (producto.id === body.id) {
+        if (producto.id === id) {
           producto.titulo = body.titulo;
           producto.precio = body.precio;
           producto.miniatura = body.miniatura;
+          flagUpdate = true;
         }
       });
+      if (!flagUpdate) {
+        throw new Error("No existe el producto solicitado!");
+      }
     } catch (error) {
       throw new Error(
         "Hubo un problema al actualizar el producto solicitado!",
