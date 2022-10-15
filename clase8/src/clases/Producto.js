@@ -10,11 +10,11 @@ class Producto {
     try {
       let index = arrayProductos.findIndex((producto) => producto.id === id);
       if (index < 0) {
-        throw new Error("El producto buscado no existe!");
+        throw "El producto buscado no existe!";
       }
       return arrayProductos[index];
     } catch (error) {
-      throw new Error(error);
+      throw error;
     }
   }
 
@@ -54,13 +54,10 @@ class Producto {
         }
       });
       if (!flagUpdate) {
-        throw new Error("No existe el producto solicitado!");
+        throw "No existe el producto solicitado!";
       }
     } catch (error) {
-      throw new Error(
-        "Hubo un problema al actualizar el producto solicitado!",
-        error
-      );
+      throw error;
     }
   }
 
@@ -69,14 +66,11 @@ class Producto {
       const index = arrayProductos.findIndex((producto) => producto.id === id);
 
       if (index < 0) {
-        throw new Error("El producto a eliminar no existe!");
+        throw "El producto a eliminar no existe!";
       }
       arrayProductos.splice(index, 1);
     } catch (error) {
-      throw new Error(
-        "Hubo un problema al borrar el producto indicado!",
-        error
-      );
+      throw error;
     }
   }
 }

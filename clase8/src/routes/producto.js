@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Producto = require("../clases/Producto");
+const { body, validationResult } = require("express-validator");
 
 const arrayProductos = [
   new Producto(
@@ -45,82 +46,69 @@ router.get("/:id", (req, res) => {
     });
   } catch (error) {
     return res.status(400).json({
-      //no propaga el mensaje
       error: error,
     });
   }
 });
 
-router.post("/", (req, res) => {
-  try {
-    const body = req.body;
-    if (!body) {
-      return res.status(400).json({
-        //no muestra este mensaje
-        error: "No se envió ningun producto para cargar!",
-      });
-    }
+router.post(
+  "/",
+  body("titulo").not().isEmpty().isString().trim().escape(),
+  body("precio").not().isEmpty().not().isString().trim().escape(),
+  body("miniatura").not().isEmpty().isString().trim().escape(),
+  (req, res) => {
+    try {
+      const errores = validationResult(req);
+      if (!errores.isEmpty()) {
+        return res.status(400).json({ errores: errores.array() });
+      }
 
-    //no puedo hacer que pase esta validacion
-    if (
-      !body.titulo ||
-      !body.precio ||
-      !body.miniatura ||
-      typeof body.titulo !== "string" ||
-      typeof body.precio !== "number" ||
-      typeof body.miniatura !== "string"
-    ) {
+      const body = req.body;
+
+      let producto = productoObj.saveProduct(body, arrayProductos);
+      return res.status(200).json({
+        producto,
+      });
+    } catch (error) {
       return res.status(400).json({
-        error: "Datos inválidos!",
+        error: error,
       });
     }
-    let producto = productoObj.saveProduct(body, arrayProductos);
-    return res.status(200).json({
-      producto,
-    });
-  } catch (error) {
-    return res.status(400).json({
-      error: error,
-    });
   }
-});
+);
 
-router.put("/:id", (req, res) => {
-  try {
-    if (isNaN(req.params.id)) {
+router.put(
+  "/:id",
+  body("titulo").not().isEmpty().isString().trim().escape(),
+  body("precio").not().isEmpty().not().isString().trim().escape(),
+  body("miniatura").not().isEmpty().isString().trim().escape(),
+  (req, res) => {
+    try {
+      const errores = validationResult(req);
+      if (!errores.isEmpty()) {
+        return res.status(400).json({ errores: errores.array() });
+      }
+
+      if (isNaN(req.params.id)) {
+        return res.status(400).json({
+          error: "Tiene que enviar un id válido!",
+        });
+      }
+
+      const id = parseInt(req.params.id);
+      const body = req.body;
+
+      productoObj.updateProduct(id, body, arrayProductos);
+      return res.status(200).json({
+        body,
+      });
+    } catch (error) {
       return res.status(400).json({
-        error: "Tiene que enviar un id válido!",
+        error: error,
       });
     }
-
-    const id = parseInt(req.params.id);
-    const body = req.body;
-
-    //no puedo hacer que pase esta validacion
-    if (
-      !body.titulo ||
-      !body.precio ||
-      !body.miniatura ||
-      typeof body.titulo !== "string" ||
-      typeof body.precio !== "number" ||
-      typeof body.miniatura !== "string"
-    ) {
-      return res.status(400).json({
-        error: "Datos inválidos!",
-      });
-    }
-
-    productoObj.updateProduct(id, body, arrayProductos);
-    return res.status(200).json({
-      body,
-    });
-  } catch (error) {
-    return res.status(400).json({
-      //no puedo catchear este error
-      error: error,
-    });
   }
-});
+);
 
 router.delete("/:id", (req, res) => {
   try {
@@ -135,7 +123,6 @@ router.delete("/:id", (req, res) => {
       arrayProductos,
     });
   } catch (error) {
-    //no puedo propagar el error
     return res.status(400).json({
       error: error,
     });
