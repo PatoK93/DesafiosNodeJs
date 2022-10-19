@@ -54,8 +54,8 @@ router.get("/:id", (req, res) => {
 router.post(
   "/",
   body("titulo").not().isEmpty().isString().trim().escape(),
-  body("precio").not().isEmpty().not().isString().trim().escape(),
-  body("miniatura").not().isEmpty().isString().trim().escape(),
+  body("precio").not().isEmpty().isInt({ min: 1 }),
+  body("miniatura").not().isEmpty().isString().trim(),
   (req, res) => {
     try {
       const errores = validationResult(req);
@@ -66,7 +66,7 @@ router.post(
       const body = req.body;
 
       let producto = productoObj.saveProduct(body, arrayProductos);
-      return res.status(200).json({
+      return res.status(201).json({
         producto,
       });
     } catch (error) {
