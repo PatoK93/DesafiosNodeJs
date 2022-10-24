@@ -1,0 +1,18 @@
+.tituloCentrado {
+  text-align: center;
+}
+
+.Centrado {
+  display: flex;
+  justify-content: center;
+}
+
+.imagenAdaptada {
+  height: 50px;
+  width: 50px;
+}
+
+.textWhite {
+  color: white;
+  text-decoration: none;
+}
