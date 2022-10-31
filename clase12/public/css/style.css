@@ -16,3 +16,25 @@
   color: white;
   text-decoration: none;
 }
+
+.separacion {
+  margin-top: 20px;
+}
+
+.emailAzulNegrita {
+  color: blue;
+  font-weight: bold;
+}
+
+.horaRojo {
+  color: red;
+}
+
+.mensajeVerdeCursiva {
+  color: green;
+  font-style: italic;
+}
+
+.mensajeFinal {
+  display: flex;
+}

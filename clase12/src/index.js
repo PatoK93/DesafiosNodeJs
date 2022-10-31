@@ -1,5 +1,5 @@
 const server = require("./services/server");
-const { initWsServer, getWsServer } = require("./services/ProductSocket");
+const { initWsServer, getWsServer } = require("./services/socket");
 
 const port = 8080;
 
