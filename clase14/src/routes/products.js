@@ -41,7 +41,6 @@ router.get("/:id", async (req, res) => {
 
 router.post(
   "/",
-  body("timestamp").not().isEmpty().isString().trim().escape(),
   body("title").not().isEmpty().isString().trim().escape(),
   body("description").not().isEmpty().isString().trim().escape(),
   body("code").not().isEmpty().isString().trim().escape(),
@@ -77,7 +76,6 @@ router.post(
 
 router.put(
   "/:id",
-  body("timestamp").not().isEmpty().isString().trim().escape(),
   body("title").not().isEmpty().isString().trim().escape(),
   body("description").not().isEmpty().isString().trim().escape(),
   body("code").not().isEmpty().isString().trim().escape(),

@@ -18,12 +18,12 @@ const viewsFolderPath = path.resolve(__dirname, "../../views");
 app.set("views", viewsFolderPath);
 app.set("view engine", "pug");
 
-app.get("/", async (req, res) => {
-  const fileName = "products.json";
-  const file = new Product(fileName);
-  let productArray = file.getAll();
-  res.render("Products", { productArray });
-});
+// app.get("/", async (req, res) => {
+//   const fileName = "products.json";
+//   const file = new Product(fileName);
+//   let productArray = file.getAll();
+//   res.render("Products", { productArray });
+// });
 
 app.use("/api", mainRouter);
 

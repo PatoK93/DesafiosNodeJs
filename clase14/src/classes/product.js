@@ -1,4 +1,5 @@
 import fs from "fs";
+import moment from "moment";
 
 class Product {
   constructor(fileName) {
@@ -76,10 +77,11 @@ class Product {
   async updateProduct(id, body) {
     const products = await this.getAll();
     let flagUpdate = false;
+
     try {
       products.forEach((product) => {
         if (product.id === id) {
-          product.timestamp = body.timestamp;
+          product.timestamp = moment().format("DD-MM-YYYY HH:MM:SS");
           product.title = body.title;
           product.description = body.description;
           product.code = body.code;
@@ -123,14 +125,12 @@ class Product {
 
   async saveProduct(data) {
     if (
-      !data.timestamp ||
       !data.title ||
       !data.description ||
       !data.code ||
       !data.photo ||
       !data.value ||
       !data.stock ||
-      typeof data.timestamp !== "string" ||
       typeof data.title !== "string" ||
       typeof data.description !== "string" ||
       typeof data.code !== "string" ||
@@ -149,7 +149,7 @@ class Product {
 
       const newProduct = {
         id: id,
-        timestamp: data.timestamp,
+        timestamp: moment().format("DD-MM-YYYY HH:MM:SS"),
         title: data.title,
         description: data.description,
         code: data.code,
@@ -166,14 +166,6 @@ class Product {
         "Hubo un problema al guardar el producto solicitado!",
         error
       );
-    }
-  }
-
-  async deleteAll() {
-    try {
-      await this.saveProducts([]);
-    } catch (error) {
-      throw new Error("Hubo un problema al borrar todos los productos!", error);
     }
   }
 
