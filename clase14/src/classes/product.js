@@ -16,8 +16,56 @@ class Product {
     }
   }
 
+  async loadEmptyFile() {
+    try {
+      let productsDefault = [
+        {
+          id: 1,
+          timestamp: "04-11-22 18:34:30",
+          title: "Remeras",
+          description: "remeras",
+          code: "x",
+          photo:
+            "https://i.pinimg.com/564x/db/ba/d5/dbbad5e8b6072dfc42a5096fc8052160.jpg",
+          value: 10.1,
+          stock: 10,
+        },
+        {
+          id: 2,
+          timestamp: "04-11-22 18:34:35",
+          title: "Pantalones",
+          description: "pantalones",
+          code: "z",
+          photo:
+            "https://www.educima.com/dibujo-para-colorear-pantalones-dl19332.jpg",
+          value: 20.2,
+          stock: 20,
+        },
+        {
+          id: 3,
+          timestamp: "04-11-22 18:34:40",
+          title: "Zapatillas",
+          description: "zapatillas",
+          code: "y",
+          photo:
+            "https://static.vecteezy.com/system/resources/previews/005/403/247/non_2x/hand-drawn-sneaker-outline-drawing-black-line-sneaker-illustration-vector.jpg",
+          value: 30.3,
+          stock: 30,
+        },
+      ];
+      const data = JSON.stringify(productsDefault, null, "\t");
+      await fs.promises.writeFile(this.fileName, data);
+    } catch (error) {
+      throw new Error("No se pudo cargar los productos por defecto!", error);
+    }
+  }
+
   async getAll() {
     try {
+      let fileExist = await this.validateExistFile();
+      if (!fileExist) {
+        await this.loadEmptyFile();
+      }
       const data = await fs.promises.readFile(this.fileName, "utf-8");
       return JSON.parse(data);
     } catch (error) {
@@ -25,10 +73,11 @@ class Product {
     }
   }
 
-  async updateProduct(id, body, productArray) {
+  async updateProduct(id, body) {
+    const products = await this.getAll();
     let flagUpdate = false;
     try {
-      productArray.forEach((product) => {
+      products.forEach((product) => {
         if (product.id === id) {
           product.timestamp = body.timestamp;
           product.title = body.title;
@@ -40,8 +89,9 @@ class Product {
           flagUpdate = true;
         }
       });
-      await this.saveProducts(productArray);
-      if (!flagUpdate) {
+      if (flagUpdate) {
+        await this.saveProducts(products);
+      } else {
         throw "No existe el producto solicitado!";
       }
     } catch (error) {
@@ -63,14 +113,11 @@ class Product {
       const products = await this.getAll();
       const index = products.findIndex((product) => product.id === id);
       if (index < 0) {
-        throw new Error("El producto buscado no existe!");
+        throw "El producto buscado no existe!";
       }
       return products[index];
     } catch (error) {
-      throw new Error(
-        "Hubo un problema al buscar el producto solicitado!",
-        error
-      );
+      throw error;
     }
   }
 
@@ -91,7 +138,7 @@ class Product {
       typeof data.value !== "number" ||
       typeof data.stock !== "number"
     )
-      throw new Error("Datos inválidos!");
+      throw "Datos inválidos!";
 
     try {
       const products = await this.getAll();
@@ -137,17 +184,14 @@ class Product {
       const index = products.findIndex((product) => product.id === id);
 
       if (index < 0) {
-        throw new Error("El producto a eliminar no existe!");
+        throw "El producto a eliminar no existe!";
       }
 
       products.splice(index, 1);
 
       await this.saveProducts(products);
     } catch (error) {
-      throw new Error(
-        "Hubo un problema al borrar el producto indicado!",
-        error
-      );
+      throw error;
     }
   }
 }

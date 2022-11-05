@@ -28,8 +28,7 @@ router.get("/:id", async (req, res) => {
       });
     }
     const id = parseInt(req.params.id);
-    let productArray = await productObj.getAll();
-    const product = await productObj.getById(id, productArray);
+    const product = await productObj.getById(id);
     return res.status(200).json({
       product,
     });
@@ -46,7 +45,7 @@ router.post(
   body("title").not().isEmpty().isString().trim().escape(),
   body("description").not().isEmpty().isString().trim().escape(),
   body("code").not().isEmpty().isString().trim().escape(),
-  body("photo").not().isEmpty().isString().trim().escape(),
+  body("photo").not().isEmpty().isString().trim(),
   body("value").not().isEmpty().isDecimal({ min: 1.0 }),
   body("stock").not().isEmpty().isInt({ min: 1 }),
   async (req, res) => {
@@ -64,8 +63,7 @@ router.post(
       }
 
       const body = req.body;
-      let productArray = await productObj.getAll();
-      let product = await productObj.saveProduct(body, productArray);
+      await productObj.saveProduct(body);
       return res.status(201).json({
         msg: "producto guardado con exito",
       });
@@ -83,7 +81,7 @@ router.put(
   body("title").not().isEmpty().isString().trim().escape(),
   body("description").not().isEmpty().isString().trim().escape(),
   body("code").not().isEmpty().isString().trim().escape(),
-  body("photo").not().isEmpty().isString().trim().escape(),
+  body("photo").not().isEmpty().isString().trim(),
   body("value").not().isEmpty().isDecimal({ min: 1.0 }),
   body("stock").not().isEmpty().isInt({ min: 1 }),
   async (req, res) => {
@@ -108,11 +106,10 @@ router.put(
 
       const id = parseInt(req.params.id);
       const body = req.body;
-      let productArray = await productObj.getAll();
 
-      await productObj.updateProduct(id, body, productArray);
+      await productObj.updateProduct(id, body);
       return res.status(200).json({
-        body,
+        msg: "producto actualizado con exito",
       });
     } catch (error) {
       return res.status(400).json({
@@ -138,9 +135,8 @@ router.delete("/:id", async (req, res) => {
     }
     const id = parseInt(req.params.id);
     await productObj.deleteById(id);
-    let productArray = await productObj.getAll();
     return res.status(200).json({
-      productArray,
+      msg: "producto eliminado con exito",
     });
   } catch (error) {
     return res.status(400).json({
