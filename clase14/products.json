@@ -1,0 +1,42 @@
+[
+	{
+		"id": 2,
+		"timestamp": "04-11-22 18:34:35",
+		"title": "Remeras",
+		"description": "remeras",
+		"code": "y",
+		"photo": "https://i.pinimg.com/564x/db/ba/d5/dbbad5e8b6072dfc42a5096fc8052160.jpg",
+		"value": 50.25,
+		"stock": 50
+	},
+	{
+		"id": 3,
+		"timestamp": "04-11-22 18:34:40",
+		"title": "Pantalones",
+		"description": "pantalones",
+		"code": "z",
+		"photo": "https://www.educima.com/dibujo-para-colorear-pantalones-dl19332.jpg",
+		"value": 350.85,
+		"stock": 90
+	},
+	{
+		"id": 4,
+		"timestamp": "04-11-22 18:34:30",
+		"title": "Zapatillasdsdsd",
+		"description": "zapatillassdsd",
+		"code": "xdsds",
+		"photo": "https:&#x2F;&#x2F;static.vecteezy.com&#x2F;system&#x2F;resources&#x2F;previews&#x2F;005&#x2F;403&#x2F;247&#x2F;non_2x&#x2F;hand-drawn-sneaker-outline-drawing-black-line-sneaker-illustration-vector.jpg",
+		"value": 150.75,
+		"stock": 20
+	},
+	{
+		"id": 5,
+		"timestamp": "04-11-22 18:34:30",
+		"title": "Zapatillasdsdsd",
+		"description": "zapatillassdsd",
+		"code": "xdsds",
+		"photo": "https:&#x2F;&#x2F;static.vecteezy.com&#x2F;system&#x2F;resources&#x2F;previews&#x2F;005&#x2F;403&#x2F;247&#x2F;non_2x&#x2F;hand-drawn-sneaker-outline-drawing-black-line-sneaker-illustration-vector.jpg",
+		"value": 150.75,
+		"stock": 20
+	}
+]
