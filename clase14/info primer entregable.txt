@@ -24,7 +24,7 @@ Aclaraciones:
 ---DATA---
 
 Productos: id, timestamp, nombre, descripcion, código, foto (url), precio, stock.
-Carrito de Compras: id, timestamp(producto), nombre, descripcion, código, foto (url), precio, stock.
+Carrito de Compras: id, timestamp(carrito), productos: {id, timestamp(producto), nombre, descripcion, código, foto (url), precio, stock}.
 
 Aclaraciones:
 
