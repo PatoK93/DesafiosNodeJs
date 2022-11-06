@@ -2,11 +2,10 @@ import express from "express";
 const router = express.Router();
 import Cart from "../classes/cart.js";
 import Product from "../classes/product.js";
-import { body, validationResult } from "express-validator";
 
 const cartFileName = "cart.json";
 const cartObj = new Cart(cartFileName);
-const productFileName = "prodcuts.json";
+const productFileName = "products.json";
 const productObj = new Product(productFileName);
 
 router.get("/:id/productos", async (req, res) => {
@@ -34,11 +33,9 @@ router.post("/", async (req, res) => {
     const carts = await cartObj.getAllProductsInCart();
     let idLastCartAdded = carts[carts.length - 1].id;
     return res.status(201).json({
-      msg: "carrito creado con exito",
-      idLastCartAdded,
+      msg: `carrito ${idLastCartAdded} creado con exito`,
     });
   } catch (error) {
-    console.log(error);
     return res.status(400).json({
       error: error,
     });
@@ -95,8 +92,9 @@ router.delete("/:id/productos/:id_prod", async (req, res) => {
     }
     const cartId = parseInt(req.params.id);
     const productId = parseInt(req.params.id_prod);
-    const productsCart = await cartObj.getCartById(cartId);
-    await cartObj.deleteProductInCartById(productsCart, productId);
+    //Esto solo sirve para saber si existe el carrito solicitado o no
+    const cart = await cartObj.getCartById(cartId);
+    await cartObj.deleteProductInCartById(cartId, productId);
     return res.status(200).json({
       msg: "producto eliminado del carrito con exito",
     });

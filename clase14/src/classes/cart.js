@@ -149,18 +149,22 @@ class Cart {
     }
   }
 
-  async deleteProductInCartById(productsCart, productId) {
+  async deleteProductInCartById(cartId, productId) {
     try {
-      const index = productsCart.products.findIndex(
+      const carts = await this.getAllProductsInCart();
+      const cartIndex = carts.findIndex((cart) => cart.id === cartId);
+
+      const productIndex = carts[cartIndex].products.findIndex(
         (product) => product.id === productId
       );
-      if (index < 0) {
+
+      if (productIndex < 0) {
         throw "El producto buscado no existe dentro del carrito!";
       }
 
-      productsCart.products.splice(index, 1);
+      carts[cartIndex].products.splice(productIndex, 1);
 
-      await this.saveCarts(productsCart);
+      await this.saveCarts(carts);
     } catch (error) {
       throw error;
     }

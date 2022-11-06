@@ -2,28 +2,7 @@
 	{
 		"id": 1,
 		"timestamp": "04-11-22 18:34:40",
-		"products": [
-			{
-				"id": 2,
-				"timestamp": "04-11-22 18:34:40",
-				"title": "Ojotas",
-				"description": "ojotas",
-				"code": "y",
-				"photo": "https://static.vecteezy.com/system/resources/previews/005/403/247/non_2x/hand-drawn-sneaker-outline-drawing-black-line-sneaker-illustration-vector.jpg",
-				"value": 20.2,
-				"stock": 20
-			},
-			{
-				"id": 3,
-				"timestamp": "04-11-22 18:34:50",
-				"title": "Remeras",
-				"description": "remeras",
-				"code": "z",
-				"photo": "https://i.pinimg.com/564x/db/ba/d5/dbbad5e8b6072dfc42a5096fc8052160.jpg",
-				"value": 30.3,
-				"stock": 30
-			}
-		]
+		"products": []
 	},
 	{
 		"id": 2,

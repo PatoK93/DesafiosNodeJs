@@ -68,5 +68,15 @@
 		"photo": "https://static.vecteezy.com/system/resources/previews/005/403/247/non_2x/hand-drawn-sneaker-outline-drawing-black-line-sneaker-illustration-vector.jpg",
 		"value": 30.3,
 		"stock": 30
+	},
+	{
+		"id": 10,
+		"timestamp": "06-11-2022 16:11:30",
+		"title": "Otro",
+		"description": "otro",
+		"code": "y",
+		"photo": "https://static.vecteezy.com/system/resources/previews/005/403/247/non_2x/hand-drawn-sneaker-outline-drawing-black-line-sneaker-illustration-vector.jpg",
+		"value": 30.3,
+		"stock": 30
 	}
 ]
