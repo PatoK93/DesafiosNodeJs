@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import Cart from "../classes/cart.js";
 import Product from "../classes/product.js";
+import { body, validationResult } from "express-validator";
 
 const cartFileName = "cart.json";
 const cartObj = new Cart(cartFileName);
@@ -42,27 +43,43 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/:id/productos/:id_prod", async (req, res) => {
-  try {
-    if (isNaN(req.params.id) || isNaN(req.params.id_prod)) {
-      return res.status(400).json({
-        error: "Tiene que enviar parámetros válidos!",
+router.post(
+  "/:id/productos",
+  body("id").not().isEmpty().isInt({ min: 1 }),
+  async (req, res) => {
+    try {
+      if (isNaN(req.params.id)) {
+        return res.status(400).json({
+          error: "Tiene que enviar un id de carrito válido!",
+        });
+      }
+
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errores: errors.array() });
+      }
+
+      const cartId = parseInt(req.params.id);
+      const productId = parseInt(req.body.id);
+      const cartSelected = await cartObj.getCartById(cartId);
+      const productToAdd = await productObj.getById(productId);
+      await cartObj.AddNewProductToCart(cartSelected.id, productToAdd);
+      return res.status(201).json({
+        msg: "producto agregado al carrito con exito",
       });
+    } catch (error) {
+      if (error.index) {
+        return res.status(404).json({
+          error: error.msg,
+        });
+      } else {
+        return res.status(400).json({
+          error: error,
+        });
+      }
     }
-    const cartId = parseInt(req.params.id);
-    const productId = parseInt(req.params.id_prod);
-    const cartSelected = await cartObj.getCartById(cartId);
-    const productToAdd = await productObj.getById(productId);
-    await cartObj.AddNewProductToCart(cartSelected.id, productToAdd);
-    return res.status(201).json({
-      msg: "producto agregado al carrito con exito",
-    });
-  } catch (error) {
-    return res.status(400).json({
-      error: error,
-    });
   }
-});
+);
 
 router.delete("/:id", async (req, res) => {
   try {

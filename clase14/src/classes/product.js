@@ -82,7 +82,7 @@ class Product {
       products.forEach((product) => {
         if (product.id === id) {
           product.timestamp = moment().format("DD-MM-YYYY HH:MM:SS");
-          product.title = body.title;
+          product.title = body.title ? body.title : product.title;
           product.description = body.description;
           product.code = body.code;
           product.photo = body.photo;
@@ -115,7 +115,11 @@ class Product {
       const products = await this.getAll();
       const index = products.findIndex((product) => product.id === id);
       if (index < 0) {
-        throw "El producto buscado no existe!";
+        const productExists = {
+          index: index,
+          msg: "El producto buscado no existe!",
+        };
+        throw productExists;
       }
       return products[index];
     } catch (error) {
@@ -176,7 +180,11 @@ class Product {
       const index = products.findIndex((product) => product.id === id);
 
       if (index < 0) {
-        throw "El producto a eliminar no existe!";
+        const productExists = {
+          index: index,
+          msg: "El producto buscado no existe!",
+        };
+        throw productExists;
       }
 
       products.splice(index, 1);

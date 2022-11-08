@@ -93,7 +93,11 @@ class Cart {
       const productsCart = await this.getAllProductsInCart();
       const index = productsCart.findIndex((cart) => cart.id === id);
       if (index < 0) {
-        throw "El carrito buscado no existe!";
+        const productExists = {
+          index: index,
+          msg: "El carrito buscado no existe!",
+        };
+        throw productExists;
       }
       return productsCart[index];
     } catch (error) {

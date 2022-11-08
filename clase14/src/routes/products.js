@@ -33,9 +33,15 @@ router.get("/:id", async (req, res) => {
       product,
     });
   } catch (error) {
-    return res.status(400).json({
-      error: error,
-    });
+    if (error.index) {
+      return res.status(404).json({
+        error: error.msg,
+      });
+    } else {
+      return res.status(400).json({
+        error: error,
+      });
+    }
   }
 });
 
@@ -137,9 +143,15 @@ router.delete("/:id", async (req, res) => {
       msg: "producto eliminado con exito",
     });
   } catch (error) {
-    return res.status(400).json({
-      error: error,
-    });
+    if (error.index) {
+      return res.status(404).json({
+        error: error.msg,
+      });
+    } else {
+      return res.status(400).json({
+        error: error,
+      });
+    }
   }
 });
 
