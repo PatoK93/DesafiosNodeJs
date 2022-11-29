@@ -2,6 +2,7 @@ import { CartsModel } from "../models/cart.js";
 import { ProductsModel } from "../models/products.js";
 import { validationResult } from "express-validator";
 import { formatTimeStamp } from "../utils/format.js";
+import { findLastCartId } from "../utils/utils.js";
 
 export const getProductsInCart = async (req, res) => {
   try {
@@ -12,7 +13,7 @@ export const getProductsInCart = async (req, res) => {
     }
     const id = parseInt(req.params.id);
 
-    const cart = await CartsModel.findById(id);
+    const cart = await CartsModel.findOne({ id: id });
 
     if (!cart) {
       return res.status(404).json({
@@ -33,13 +34,14 @@ export const getProductsInCart = async (req, res) => {
 
 export const createCart = async (req, res) => {
   try {
-    let lastId = findLastId();
-    lastId + 1;
+    let lastId = await findLastCartId();
+    let newId = lastId + 1;
+    let id = newId;
     let timestamp = formatTimeStamp();
     let products = [];
 
     await CartsModel.create({
-      lastId,
+      id,
       timestamp,
       products,
     });
@@ -49,8 +51,8 @@ export const createCart = async (req, res) => {
     });
   } catch (error) {
     return res.status(500).json({
-      error: err.message,
-      stack: err.stack,
+      error: error.message,
+      stack: error.stack,
     });
   }
 };
@@ -71,7 +73,7 @@ export const addProductsToCart = async (req, res) => {
     const cartId = parseInt(req.params.id);
     const productId = parseInt(req.body.id);
 
-    let cart = await CartsModel.findById(cartId);
+    let cart = await CartsModel.findOne({ id: cartId });
 
     if (!cart) {
       return res.status(404).json({
@@ -79,7 +81,10 @@ export const addProductsToCart = async (req, res) => {
       });
     }
 
-    let product = await ProductsModel.findById(productId);
+    let product = await ProductsModel.findOne({ id: productId });
+
+    let products = cart.products;
+    products.push(product);
 
     if (!product) {
       return res.status(404).json({
@@ -88,7 +93,7 @@ export const addProductsToCart = async (req, res) => {
     } else {
       const productAddedToCart = await CartsModel.findByIdAndUpdate(
         cart._id,
-        { product }, //yo creo que esto me pisa el array y me deja, o un solo objeto, o un array con este objeto
+        { products },
         { new: true }
       );
 
@@ -112,22 +117,22 @@ export const deleteCartById = async (req, res) => {
       });
     }
     const id = parseInt(req.params.id);
-    let cart = await CartsModel.findById(id);
+    let cart = await CartsModel.findOne({ id: id });
 
     if (!cart) {
       return res.status(404).json({
-        mensaje: "arrito no encontrado!",
+        mensaje: "carrito no encontrado!",
       });
     } else {
-      await CartsModel.findByIdAndDelete(id);
+      await CartsModel.findByIdAndDelete(cart._id);
       return res.status(200).json({
         mensaje: "carrito eliminado con exito",
       });
     }
   } catch (error) {
     res.status(500).json({
-      error: err.message,
-      stack: err.stack,
+      error: error.message,
+      stack: error.stack,
     });
   }
 };
@@ -142,7 +147,7 @@ export const deleteProductInCartById = async (req, res) => {
     const cartId = parseInt(req.params.id);
     const productId = parseInt(req.params.id_prod);
 
-    let cart = await CartsModel.findById(cartId);
+    let cart = await CartsModel.findOne({ id: cartId });
 
     if (!cart) {
       return res.status(404).json({
@@ -150,19 +155,19 @@ export const deleteProductInCartById = async (req, res) => {
       });
     }
 
-    let product = await CartsModel.find({
-      products: {
-        id: cartId,
-      },
-    });
+    let productExists = cart.products.find((item) => item.id == productId);
 
-    if (!product) {
+    if (!productExists) {
       return res.status(404).json({
         mensaje: "Producto no encontrado!",
       });
     } else {
-      const productAddedToCart = await CartsModel.findByIdAndDelete(cart._id, {
-        product,
+      let products = cart.products;
+      const filteredProducts = products.filter((item) => item.id !== productId);
+      products = filteredProducts;
+
+      const productAddedToCart = await CartsModel.findByIdAndUpdate(cart._id, {
+        products,
       });
 
       return res.status(201).json({
@@ -171,18 +176,8 @@ export const deleteProductInCartById = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({
-      error: err.message,
-      stack: err.stack,
+      error: error.message,
+      stack: error.stack,
     });
   }
 };
-
-//metodo repetido (mejorar)
-
-const findLastId = async () => {
-  let lastDocument = await CartsModel.sort({ id: -1 }).limit(1);
-  let lastId = lastDocument.id;
-  return lastId;
-};
-
-export default router;

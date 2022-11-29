@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const connectionString =
-  process.env.MONGO_ATLAS_SRV || "mongodb://localhost:27017";
+  process.env.MONGO_ATLAS_SRV || "mongodb://localhost:27017/ecommerce";
 
 export const initMongoDB = async () => {
   try {

@@ -1,5 +1,6 @@
 import moment from "moment";
 
 export const formatTimeStamp = () => {
-  return { timestamp: moment().format() };
+  let timestamp = moment().format().toString();
+  return timestamp;
 };
