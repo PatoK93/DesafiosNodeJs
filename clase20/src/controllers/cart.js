@@ -47,7 +47,7 @@ export const createCart = async (req, res) => {
     });
 
     return res.status(201).json({
-      mensaje: `carrito ${lastId} creado con exito`,
+      mensaje: `carrito ${newId} creado con exito`,
     });
   } catch (error) {
     return res.status(500).json({
