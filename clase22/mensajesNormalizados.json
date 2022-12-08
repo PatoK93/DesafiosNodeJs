@@ -1,0 +1,70 @@
+{
+	"entities": {
+		"author": {
+			"test@test.com": {
+				"id": "test@test.com",
+				"nombre": "test",
+				"apellido": "test",
+				"edad": "20",
+				"alias": "test",
+				"avatar": "test"
+			},
+			"test1@test.com": {
+				"id": "test1@test.com",
+				"nombre": "test",
+				"apellido": "test",
+				"edad": "20",
+				"alias": "test",
+				"avatar": "test"
+			},
+			"test2@test.com": {
+				"id": "test2@test.com",
+				"nombre": "test",
+				"apellido": "test",
+				"edad": "20",
+				"alias": "test",
+				"avatar": "test"
+			}
+		},
+		"message": {
+			"638ea7a67ab7f7fcf7156ac4": {
+				"_id": "638ea7a67ab7f7fcf7156ac4",
+				"author": "test@test.com",
+				"text": "test"
+			},
+			"638ea7b37ab7f7fcf7156ac6": {
+				"_id": "638ea7b37ab7f7fcf7156ac6",
+				"author": "test@test.com",
+				"text": "test 1"
+			},
+			"638eb3b77ab7f7fcf7156ad5": {
+				"_id": "638eb3b77ab7f7fcf7156ad5",
+				"author": "test@test.com",
+				"text": "test 2"
+			},
+			"638eb3d17ab7f7fcf7156ad7": {
+				"_id": "638eb3d17ab7f7fcf7156ad7",
+				"author": "test1@test.com",
+				"text": "test 3"
+			},
+			"638eb3f67ab7f7fcf7156ad8": {
+				"_id": "638eb3f67ab7f7fcf7156ad8",
+				"author": "test1@test.com",
+				"text": "test 4"
+			},
+			"638eb4087ab7f7fcf7156ad9": {
+				"_id": "638eb4087ab7f7fcf7156ad9",
+				"author": "test2@test.com",
+				"text": "test 5"
+			}
+		}
+	},
+	"result": [
+		"638ea7a67ab7f7fcf7156ac4",
+		"638ea7b37ab7f7fcf7156ac6",
+		"638eb3b77ab7f7fcf7156ad5",
+		"638eb3d17ab7f7fcf7156ad7",
+		"638eb3f67ab7f7fcf7156ad8",
+		"638eb4087ab7f7fcf7156ad9"
+	]
+}

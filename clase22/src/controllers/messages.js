@@ -1,5 +1,10 @@
 import { MessagesModel } from "../models/messages.js";
 import { normalize, denormalize, schema } from "normalizr";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const author = new schema.Entity("author", {}, { idAttribute: "id" });
 
@@ -36,12 +41,21 @@ export const AllMessages = async (req, res) => {
 
 export const NormalizedMessages = async (req, res) => {
   try {
+    const normalizedMessagesPath = path.join(
+      __dirname,
+      "../../mensajesNormalizados.json"
+    );
     const messagesOriginalData = await MessagesModel.find().lean();
-
-    let normalizedMessages = normalize(messagesOriginalData, msgsSchema);
+    let normalizedMessagesData = normalize(messagesOriginalData, msgsSchema);
+    let normalizedMessagesToJson = JSON.stringify(
+      normalizedMessagesData,
+      null,
+      "\t"
+    );
+    fs.writeFileSync(normalizedMessagesPath, normalizedMessagesToJson);
 
     return res.status(200).json({
-      data: normalizedMessages,
+      data: normalizedMessagesData,
     });
   } catch (error) {
     res.status(500).json({
@@ -53,18 +67,23 @@ export const NormalizedMessages = async (req, res) => {
 
 export const DenormalizedMessages = async (req, res) => {
   try {
-    const messagesOriginalData = await MessagesModel.find().lean();
+    const normalizedMessagesPath = path.join(
+      __dirname,
+      "../../mensajesNormalizados.json"
+    );
 
-    let normalizedMessages = normalize(messagesOriginalData, msgsSchema);
+    const normalizedMessagesData = JSON.parse(
+      fs.readFileSync(normalizedMessagesPath)
+    );
 
-    const denormalizedData = denormalize(
-      normalizedMessages.result,
+    const denormalizedMessagesData = denormalize(
+      normalizedMessagesData.result,
       msgsSchema,
-      normalizedMessages.entities
+      normalizedMessagesData.entities
     );
 
     return res.status(200).json({
-      data: denormalizedData,
+      data: denormalizedMessagesData,
     });
   } catch (error) {
     res.status(500).json({
