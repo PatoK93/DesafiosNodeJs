@@ -29,6 +29,15 @@ export const getHome = (req, res) => {
 };
 
 export const logOut = (req, res) => {
-  req.logOut();
-  res.json({ message: "Hasta Luego!" });
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    req.session.destroy((err) => {
+      if (err) {
+        return next(err);
+      }
+    });
+    res.send({ msg: "Hasta Luego!" });
+  });
 };
