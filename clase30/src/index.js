@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const minimist = require('minimist');
+const dotenv = require("dotenv");
 
 dotenv.config();
 const argumentos = minimist(process.argv.slice(2));
