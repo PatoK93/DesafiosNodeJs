@@ -1,0 +1,23 @@
+-NEGOCIO-
+
+--LOGIN--
+
+*validar campos.
+
+--SIGNUP--
+
+datos: email, password (encriptada), nombre, dirección, edad, número de teléfono, foto/avatar.
+carpeta publica: imagen.
+*ante la incorporación de un usuario, el servidor enviará un email al administrador con todos los datos de registro y asunto 'nuevo registro', a una dirección que se encuentre por el momento almacenada en una constante global.
+
+--HOME (PRODCUTS AND CART)--
+
+*endpoint para finalizar compra.
+*el email contendrá en su cuerpo la lista completa de productos a comprar y en el asunto la frase 'nuevo pedido de ' y el nombre y email del usuario que los solicitó. En el mensaje de whatsapp se debe enviar la misma información del asunto del email.
+*el usuario recibirá un mensaje de texto al número que haya registrado, indicando que su pedido ha sido recibido y se encuentra en proceso.
+*protegeer rutas que son solo para admins, por ejemplo las de manipulacion de producto (esto noes necesario, peroestaria bueno sumarlo).
+*ver de agregar a los carritos el id de usuario o su email, asi el usuario logueado solo puede ver su propio carrito y manipularlo, evitando que utilice o vea los demas.
+
+-ADICIONAL-
+
+*utilizar alguno de los loggers ya vistos y así reemplazar todos los mensajes a consola por logs eficientes hacia la misma consola. En el caso de errores moderados ó graves el log tendrá además como destino un archivo elegido (cambiar logs).
