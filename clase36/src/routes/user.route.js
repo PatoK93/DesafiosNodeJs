@@ -14,6 +14,12 @@ router.post(
   "/signup",
   body("username").not().isEmpty().isEmail().trim().escape(),
   body("password").not().isEmpty().isString().trim().escape(),
+  body("name").not().isEmpty().isString().trim().escape(),
+  body("adress").not().isEmpty().isString().trim().escape(),
+  body("age").not().isEmpty().isString().trim().escape(),
+  body("phone").not().isEmpty().isString().trim().escape(),
+  body("picture").not().isEmpty().isString().trim().escape(),
+  body("admin").not().isEmpty().isString().trim().escape(),
   signUp
 );
 

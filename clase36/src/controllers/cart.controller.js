@@ -3,8 +3,14 @@ import { ProductModel } from "../models/product.model.js";
 import { validationResult } from "express-validator";
 import { formatTimeStamp } from "../utils/format.js";
 import { findLastCartId } from "../utils/utils.js";
+import { actualUser } from "../services/auth.js";
+
+let username;
+let name;
 
 export const getProductsInCart = async (req, res) => {
+  username = actualUser.username;
+  name = actualUser.name;
   try {
     if (isNaN(req.params.id)) {
       return res.status(400).json({
@@ -12,7 +18,6 @@ export const getProductsInCart = async (req, res) => {
       });
     }
     const id = parseInt(req.params.id);
-
     const cart = await CartModel.findOne({ id: id });
 
     if (!cart) {
@@ -20,9 +25,15 @@ export const getProductsInCart = async (req, res) => {
         mensaje: "Carrito no encontrado!",
       });
     } else {
-      return res.status(200).json({
-        data: cart,
-      });
+      if (username == cart.username) {
+        return res.status(200).json({
+          data: cart,
+        });
+      } else {
+        return res.status(403).json({
+          msg: "No tiene permisos de acceso!",
+        });
+      }
     }
   } catch (error) {
     res.status(500).json({
@@ -39,10 +50,14 @@ export const createCart = async (req, res) => {
     let id = newId;
     let timestamp = formatTimeStamp();
     let products = [];
+    let username = actualUser.username;
+    let name = actualUser.name;
 
     await CartModel.create({
       id,
       timestamp,
+      username,
+      name,
       products,
     });
 
@@ -58,6 +73,8 @@ export const createCart = async (req, res) => {
 };
 
 export const addProductsToCart = async (req, res) => {
+  username = actualUser.username;
+  name = actualUser.name;
   try {
     if (isNaN(req.params.id)) {
       return res.status(400).json({
@@ -78,6 +95,12 @@ export const addProductsToCart = async (req, res) => {
     if (!cart) {
       return res.status(404).json({
         mensaje: "Carrito no encontrado!",
+      });
+    }
+
+    if (username != cart.username) {
+      return res.status(403).json({
+        msg: "No tiene permisos de acceso!",
       });
     }
 
@@ -110,6 +133,8 @@ export const addProductsToCart = async (req, res) => {
 };
 
 export const deleteCartById = async (req, res) => {
+  username = actualUser.username;
+  name = actualUser.name;
   try {
     if (isNaN(req.params.id)) {
       return res.status(400).json({
@@ -124,10 +149,16 @@ export const deleteCartById = async (req, res) => {
         mensaje: "carrito no encontrado!",
       });
     } else {
-      await CartModel.findByIdAndDelete(cart._id);
-      return res.status(200).json({
-        mensaje: "carrito eliminado con exito",
-      });
+      if (username != cart.username) {
+        return res.status(403).json({
+          msg: "No tiene permisos de acceso!",
+        });
+      } else {
+        await CartModel.findByIdAndDelete(cart._id);
+        return res.status(200).json({
+          mensaje: "carrito eliminado con exito",
+        });
+      }
     }
   } catch (error) {
     res.status(500).json({
@@ -138,6 +169,8 @@ export const deleteCartById = async (req, res) => {
 };
 
 export const deleteProductInCartById = async (req, res) => {
+  username = actualUser.username;
+  name = actualUser.name;
   try {
     if (isNaN(req.params.id) || isNaN(req.params.id_prod)) {
       return res.status(400).json({
@@ -152,6 +185,12 @@ export const deleteProductInCartById = async (req, res) => {
     if (!cart) {
       return res.status(404).json({
         mensaje: "Carrito no encontrado!",
+      });
+    }
+
+    if (username != cart.username) {
+      return res.status(403).json({
+        msg: "No tiene permisos de acceso!",
       });
     }
 

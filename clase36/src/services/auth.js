@@ -8,6 +8,8 @@ const strategyOptions = {
   passReqToCallback: true,
 };
 
+export let actualUser = {};
+
 const signup = async (req, username, password, done) => {
   console.log("SIGNUP!");
   try {
@@ -17,7 +19,24 @@ const signup = async (req, username, password, done) => {
     if (user) {
       return done(null, false, { message: "El usuario ya existe!" });
     }
-    const newUser = new UserModel({ username, password });
+
+    let name = req.body.name;
+    let adress = req.body.adress;
+    let age = req.body.age;
+    let phone = req.body.phone;
+    let picture = req.body.picture;
+    let admin = req.body.admin;
+
+    const newUser = new UserModel({
+      username,
+      password,
+      name,
+      adress,
+      age,
+      phone,
+      picture,
+      admin,
+    });
     newUser.password = await newUser.encryptPassword(password);
     await newUser.save();
     return done(null, newUser);
@@ -32,6 +51,7 @@ const login = async (req, username, password, done) => {
   try {
     const query = { username: username };
     const user = await UserModel.findOne(query);
+    actualUser = user;
     if (!user) {
       return done(null, false, { message: "Usuario no encontrado!" });
     } else {
