@@ -1,9 +1,0 @@
--NEGOCIO-
-
---HOME (PRODUCTS AND CARTS)--
-
-*en el mensaje de whatsapp se debe enviar la misma información del asunto del email (nueva compra de, nombre e email).
-
--ADICIONAL-
-
-*Desplegar en Railway.

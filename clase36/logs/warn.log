@@ -184,3 +184,187 @@
 [2023-01-31T23:09:13.242] [WARN] myLoggerWarn - PID MASTER= 26012
 [2023-01-31T23:12:42.902] [WARN] myLoggerWarn - PID MASTER= 17308
 [2023-01-31T23:13:22.271] [WARN] myLoggerWarn - PID MASTER= 31352
+[2023-02-01T00:01:58.206] [WARN] myLoggerWarn - PID MASTER= 8432
+[2023-02-01T00:04:12.955] [WARN] myLoggerWarn - Email enviado!
+[2023-02-01T00:04:12.955] [WARN] myLoggerWarn - {
+  accepted: [ 'mireille.ernser47@ethereal.email' ],
+  rejected: [],
+  ehlo: [ 'PIPELINING', '8BITMIME', 'SMTPUTF8', 'AUTH LOGIN PLAIN' ],
+  envelopeTime: 698,
+  messageTime: 261,
+  messageSize: 720,
+  response: '250 Accepted [STATUS=new MSGID=Y9mRw8h3AqQaGWhjY9nWq3UwMOH4wtNBAAAACJBeuEg7HWTDJeV5ea2JwUA]',
+  envelope: {
+    from: 'mireille.ernser47@ethereal.email',
+    to: [ 'mireille.ernser47@ethereal.email' ]
+  },
+  messageId: '<762aa9af-4e8b-29e2-2812-fa2f05b94371@ethereal.email>'
+}
+[2023-02-01T00:04:14.002] [WARN] myLoggerWarn - {
+  body: 'Sent from your Twilio trial account - Pedido recibido!',
+  numSegments: '1',
+  direction: 'outbound-api',
+  from: '+12398803123',
+  to: '+541124084422',
+  dateUpdated: '2023-02-01T03:04:12.000Z',
+  price: null,
+  errorMessage: null,
+  uri: '/2010-04-01/Accounts/ACb0d872f4a7fdbbc798c01801a0b26c56/Messages/SM3e3fbcce48398fe3d58fa043caf6fa87.json',
+  accountSid: 'ACb0d872f4a7fdbbc798c01801a0b26c56',
+  numMedia: '0',
+  status: 'queued',
+  messagingServiceSid: null,
+  sid: 'SM3e3fbcce48398fe3d58fa043caf6fa87',
+  dateSent: null,
+  dateCreated: '2023-02-01T03:04:12.000Z',
+  errorCode: null,
+  priceUnit: 'USD',
+  apiVersion: '2010-04-01',
+  subresourceUris: {
+    media: '/2010-04-01/Accounts/ACb0d872f4a7fdbbc798c01801a0b26c56/Messages/SM3e3fbcce48398fe3d58fa043caf6fa87/Media.json'
+  }
+}
+[2023-02-01T00:06:31.336] [WARN] myLoggerWarn - PID MASTER= 31324
+[2023-02-01T00:06:59.072] [WARN] myLoggerWarn - Email enviado!
+[2023-02-01T00:06:59.073] [WARN] myLoggerWarn - {
+  accepted: [ 'mireille.ernser47@ethereal.email' ],
+  rejected: [],
+  ehlo: [ 'PIPELINING', '8BITMIME', 'SMTPUTF8', 'AUTH LOGIN PLAIN' ],
+  envelopeTime: 692,
+  messageTime: 251,
+  messageSize: 720,
+  response: '250 Accepted [STATUS=new MSGID=Y9mRw8h3AqQaGWhjY9nXUeCSOiIUa1a4AAAACezqVsfbcgz30rR657aCn5E]',
+  envelope: {
+    from: 'mireille.ernser47@ethereal.email',
+    to: [ 'mireille.ernser47@ethereal.email' ]
+  },
+  messageId: '<9fdda425-de77-f000-30e8-4e8be5d5792b@ethereal.email>'
+}
+[2023-02-01T00:07:00.078] [WARN] myLoggerWarn - {
+  body: 'Sent from your Twilio trial account - Pedido recibido!',
+  numSegments: '1',
+  direction: 'outbound-api',
+  from: '+12398803123',
+  to: '+541124084422',
+  dateUpdated: '2023-02-01T03:06:58.000Z',
+  price: null,
+  errorMessage: null,
+  uri: '/2010-04-01/Accounts/ACb0d872f4a7fdbbc798c01801a0b26c56/Messages/SMac2953dc8ed4c7a86dcd2b3d8c78cd71.json',
+  accountSid: 'ACb0d872f4a7fdbbc798c01801a0b26c56',
+  numMedia: '0',
+  status: 'queued',
+  messagingServiceSid: null,
+  sid: 'SMac2953dc8ed4c7a86dcd2b3d8c78cd71',
+  dateSent: null,
+  dateCreated: '2023-02-01T03:06:58.000Z',
+  errorCode: null,
+  priceUnit: 'USD',
+  apiVersion: '2010-04-01',
+  subresourceUris: {
+    media: '/2010-04-01/Accounts/ACb0d872f4a7fdbbc798c01801a0b26c56/Messages/SMac2953dc8ed4c7a86dcd2b3d8c78cd71/Media.json'
+  }
+}
+[2023-02-01T00:11:42.379] [WARN] myLoggerWarn - PID MASTER= 19320
+[2023-02-01T00:12:25.525] [WARN] myLoggerWarn - Email enviado!
+[2023-02-01T00:12:25.525] [WARN] myLoggerWarn - {
+  accepted: [ 'mireille.ernser47@ethereal.email' ],
+  rejected: [],
+  ehlo: [ 'PIPELINING', '8BITMIME', 'SMTPUTF8', 'AUTH LOGIN PLAIN' ],
+  envelopeTime: 730,
+  messageTime: 275,
+  messageSize: 720,
+  response: '250 Accepted [STATUS=new MSGID=Y9mRw8h3AqQaGWhjY9nYmHntmnrqI8VBAAAACk.o42GAbXMuMo-HJcbo4xY]',
+  envelope: {
+    from: 'mireille.ernser47@ethereal.email',
+    to: [ 'mireille.ernser47@ethereal.email' ]
+  },
+  messageId: '<fb73b141-3631-dd8c-3993-f86da829439a@ethereal.email>'
+}
+[2023-02-01T00:12:26.690] [WARN] myLoggerWarn - {
+  body: 'Sent from your Twilio trial account - Pedido recibido!',
+  numSegments: '1',
+  direction: 'outbound-api',
+  from: '+12398803123',
+  to: '+541124084422',
+  dateUpdated: '2023-02-01T03:12:25.000Z',
+  price: null,
+  errorMessage: null,
+  uri: '/2010-04-01/Accounts/ACb0d872f4a7fdbbc798c01801a0b26c56/Messages/SM47eacdb4e379b30ef6ca6914cdc01538.json',
+  accountSid: 'ACb0d872f4a7fdbbc798c01801a0b26c56',
+  numMedia: '0',
+  status: 'queued',
+  messagingServiceSid: null,
+  sid: 'SM47eacdb4e379b30ef6ca6914cdc01538',
+  dateSent: null,
+  dateCreated: '2023-02-01T03:12:25.000Z',
+  errorCode: null,
+  priceUnit: 'USD',
+  apiVersion: '2010-04-01',
+  subresourceUris: {
+    media: '/2010-04-01/Accounts/ACb0d872f4a7fdbbc798c01801a0b26c56/Messages/SM47eacdb4e379b30ef6ca6914cdc01538/Media.json'
+  }
+}
+[2023-02-01T00:12:27.433] [WARN] myLoggerWarn - {
+  body: 'Se ingreso un pedido del usuario usuarioNuevo - patoPato. Gracias por su compra!',
+  numSegments: '1',
+  direction: 'outbound-api',
+  from: 'whatsapp:+14155238886',
+  to: 'whatsapp:+541124084422',
+  dateUpdated: '2023-02-01T03:12:26.000Z',
+  price: null,
+  errorMessage: null,
+  uri: '/2010-04-01/Accounts/ACb0d872f4a7fdbbc798c01801a0b26c56/Messages/SMa70968dd38e2ae5c46ccaac484e9fe78.json',
+  accountSid: 'ACb0d872f4a7fdbbc798c01801a0b26c56',
+  numMedia: '0',
+  status: 'queued',
+  messagingServiceSid: null,
+  sid: 'SMa70968dd38e2ae5c46ccaac484e9fe78',
+  dateSent: null,
+  dateCreated: '2023-02-01T03:12:26.000Z',
+  errorCode: null,
+  priceUnit: null,
+  apiVersion: '2010-04-01',
+  subresourceUris: {
+    media: '/2010-04-01/Accounts/ACb0d872f4a7fdbbc798c01801a0b26c56/Messages/SMa70968dd38e2ae5c46ccaac484e9fe78/Media.json'
+  }
+}
+[2023-02-01T00:15:05.655] [WARN] myLoggerWarn - PID MASTER= 15560
+[2023-02-01T00:16:01.748] [WARN] myLoggerWarn - Email enviado!
+[2023-02-01T00:16:01.748] [WARN] myLoggerWarn - {
+  accepted: [ 'mireille.ernser47@ethereal.email' ],
+  rejected: [],
+  ehlo: [ 'PIPELINING', '8BITMIME', 'SMTPUTF8', 'AUTH LOGIN PLAIN' ],
+  envelopeTime: 681,
+  messageTime: 249,
+  messageSize: 720,
+  response: '250 Accepted [STATUS=new MSGID=Y9mRw8h3AqQaGWhjY9nZcOCSOiIUa1bvAAAACzaUjptZtU4.lvJpz.iFZqI]',
+  envelope: {
+    from: 'mireille.ernser47@ethereal.email',
+    to: [ 'mireille.ernser47@ethereal.email' ]
+  },
+  messageId: '<c0540184-953b-2c12-2957-428234d80bdf@ethereal.email>'
+}
+[2023-02-01T00:16:03.523] [WARN] myLoggerWarn - {
+  body: 'Se ingreso un pedido del usuario usuarioNuevo - patoPato. Gracias por su compra!',
+  numSegments: '1',
+  direction: 'outbound-api',
+  from: 'whatsapp:+14155238886',
+  to: 'whatsapp:+5491124084422',
+  dateUpdated: '2023-02-01T03:16:02.000Z',
+  price: null,
+  errorMessage: null,
+  uri: '/2010-04-01/Accounts/ACb0d872f4a7fdbbc798c01801a0b26c56/Messages/SM8f7afd7d5c48a454687285d115a5314d.json',
+  accountSid: 'ACb0d872f4a7fdbbc798c01801a0b26c56',
+  numMedia: '0',
+  status: 'queued',
+  messagingServiceSid: null,
+  sid: 'SM8f7afd7d5c48a454687285d115a5314d',
+  dateSent: null,
+  dateCreated: '2023-02-01T03:16:02.000Z',
+  errorCode: null,
+  priceUnit: null,
+  apiVersion: '2010-04-01',
+  subresourceUris: {
+    media: '/2010-04-01/Accounts/ACb0d872f4a7fdbbc798c01801a0b26c56/Messages/SM8f7afd7d5c48a454687285d115a5314d/Media.json'
+  }
+}

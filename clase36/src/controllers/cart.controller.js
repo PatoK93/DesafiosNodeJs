@@ -5,7 +5,7 @@ import { formatTimeStamp } from "../utils/format.js";
 import { findLastCartId } from "../utils/utils.js";
 import { actualUser } from "../services/auth.js";
 import { sendUserFinishBuyMail } from "../mail/mail.js";
-import { sendSms } from "../sms/sms.js";
+import { sendSms, sendWS } from "../sms/sms.js";
 
 let username;
 let name;
@@ -326,6 +326,7 @@ export const finishOrder = async (req, res) => {
 
     await sendUserFinishBuyMail(username, name, cart.products);
     await sendSms(actualUser.phone);
+    await sendWS(actualUser);
 
     return res.status(200).json({
       mensaje: "compra realizada con éxito!",

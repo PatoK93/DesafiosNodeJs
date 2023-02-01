@@ -11,7 +11,22 @@ export const sendSms = async (phone) => {
     const message = {
       body: "Pedido recibido!",
       from: process.env.SMS,
-      to: phone,
+      to: "+" + phone,
+    };
+    const response = await twilioClient.messages.create(message);
+    infoLogger.info(response);
+    warnLogger.warn(response);
+  } catch (error) {
+    errorLogger.warn(error);
+  }
+};
+
+export const sendWS = async (usuario) => {
+  try {
+    const message = {
+      body: `Se ingreso un pedido del usuario ${usuario.username} - ${usuario.name}. Gracias por su compra!`,
+      from: process.env.CEL,
+      to: "whatsapp:+" + usuario.phone,
     };
     const response = await twilioClient.messages.create(message);
     infoLogger.info(response);
