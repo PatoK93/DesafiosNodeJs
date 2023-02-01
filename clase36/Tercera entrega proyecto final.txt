@@ -1,19 +1,9 @@
 -NEGOCIO-
 
---SIGNUP--
-
-*ante la incorporación de un usuario, el servidor enviará un email al administrador con todos los datos de registro y asunto 'nuevo registro', a una dirección
-que se encuentre por el momento almacenada en una constante global.
-
 --HOME (PRODUCTS AND CARTS)--
 
-*endpoint para finalizar compra.
-*el email contendrá en su cuerpo la lista completa de productos a comprar y en el asunto la frase 'nuevo pedido de ' y el nombre y email del usuario
-que los solicitó. En el mensaje de whatsapp se debe enviar la misma información del asunto del email.
-*el usuario recibirá un mensaje de texto al número que haya registrado, indicando que su pedido ha sido recibido y se encuentra en proceso.
+*en el mensaje de whatsapp se debe enviar la misma información del asunto del email (nueva compra de, nombre e email).
 
 -ADICIONAL-
 
-*utilizar alguno de los loggers ya vistos y así reemplazar todos los mensajes a consola por logs eficientes hacia la misma consola. En el caso de errores moderados
-ó graves el log tendrá además como destino un archivo elegido (cambiar logs).
 *Desplegar en Railway.

@@ -3,18 +3,21 @@ import cluster from "cluster";
 import os from "os";
 import server from "./services/server.js";
 import { initDb } from "./db/db.js";
+import { infoLogger, warnLogger, errorLogger } from "./logs/index.js";
 
 const numCPUs = os.cpus().length;
 
 const init = async () => {
   if (cluster.isPrimary) {
-    console.log(`cantidad de nucleos= ${numCPUs}`);
-    console.log(`PID MASTER= ${process.pid}`);
+    infoLogger.info(`cantidad de nucleos= ${numCPUs}`);
+    infoLogger.info(`PID MASTER= ${process.pid}`);
+    warnLogger.warn(`PID MASTER= ${process.pid}`);
+    errorLogger.error(`PID MASTER= ${process.pid}`);
     for (let i = 0; i < numCPUs; i++) {
       cluster.fork();
     }
     cluster.on("exit", (worker, code) => {
-      console.log(`Worker ${worker.process.pid} with code ${code}`);
+      infoLogger.info(`Worker ${worker.process.pid} with code ${code}`);
       cluster.fork();
     });
   } else {
@@ -22,13 +25,13 @@ const init = async () => {
     const port = process.env.PORT || 8080;
 
     server.listen(port, () =>
-      console.log(
+      infoLogger.info(
         `Servidor express escuchando en el puerto ${port} - PID WORKER ${process.pid}`
       )
     );
 
     server.on("error", (error) => {
-      console.log("Catch de error en servidor!", error);
+      errorLogger.error("Catch de error en servidor!", error);
     });
   }
 };

@@ -6,6 +6,7 @@ import {
   addProductsToCart,
   deleteCartById,
   deleteProductInCartById,
+  finishOrder,
 } from "../controllers/cart.controller.js";
 import { body } from "express-validator";
 import { isLoggedIn } from "../middlewares/user.middleware.js";
@@ -20,5 +21,6 @@ router.post(
 );
 router.delete("/:id", isLoggedIn, deleteCartById);
 router.delete("/:id/productos/:id_prod", isLoggedIn, deleteProductInCartById);
+router.get("/buy/:id", isLoggedIn, finishOrder);
 
 export default router;

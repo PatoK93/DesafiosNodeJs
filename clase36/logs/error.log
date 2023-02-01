@@ -1,0 +1,112 @@
+[2023-01-31T19:06:19.955] [ERROR] myLoggerError - PID MASTER= 26264
+[2023-01-31T19:14:33.439] [ERROR] myLoggerError - PID MASTER= 4056
+[2023-01-31T19:14:54.253] [ERROR] myLoggerError - PID MASTER= 3336
+[2023-01-31T19:15:03.931] [ERROR] myLoggerError - PID MASTER= 14476
+[2023-01-31T19:15:08.462] [ERROR] myLoggerError - PID MASTER= 28472
+[2023-01-31T19:18:44.056] [ERROR] myLoggerError - PID MASTER= 7996
+[2023-01-31T20:04:24.264] [ERROR] myLoggerError - PID MASTER= 18548
+[2023-01-31T20:07:10.019] [ERROR] myLoggerError - Error: self signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1530:34)
+    at TLSSocket.emit (node:events:520:28)
+    at TLSSocket._finishInit (node:_tls_wrap:944:8)
+    at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:725:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+[2023-01-31T20:09:48.558] [ERROR] myLoggerError - PID MASTER= 16176
+[2023-01-31T20:10:07.324] [ERROR] myLoggerError - Error: self signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1530:34)
+    at TLSSocket.emit (node:events:520:28)
+    at TLSSocket._finishInit (node:_tls_wrap:944:8)
+    at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:725:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+[2023-01-31T20:11:39.903] [ERROR] myLoggerError - PID MASTER= 21064
+[2023-01-31T20:11:43.061] [ERROR] myLoggerError - PID MASTER= 22500
+[2023-01-31T20:12:06.582] [ERROR] myLoggerError - Error: self signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1530:34)
+    at TLSSocket.emit (node:events:520:28)
+    at TLSSocket._finishInit (node:_tls_wrap:944:8)
+    at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:725:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+[2023-01-31T20:13:29.409] [ERROR] myLoggerError - PID MASTER= 18120
+[2023-01-31T20:13:50.784] [ERROR] myLoggerError - Error: self signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1530:34)
+    at TLSSocket.emit (node:events:520:28)
+    at TLSSocket._finishInit (node:_tls_wrap:944:8)
+    at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:725:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+[2023-01-31T20:15:13.957] [ERROR] myLoggerError - PID MASTER= 7720
+[2023-01-31T20:15:36.616] [ERROR] myLoggerError - PID MASTER= 32816
+[2023-01-31T20:16:00.590] [ERROR] myLoggerError - PID MASTER= 35472
+[2023-01-31T20:18:33.205] [ERROR] myLoggerError - PID MASTER= 4300
+[2023-01-31T20:19:54.602] [ERROR] myLoggerError - Error: self signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1530:34)
+    at TLSSocket.emit (node:events:520:28)
+    at TLSSocket._finishInit (node:_tls_wrap:944:8)
+    at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:725:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+[2023-01-31T20:23:03.612] [ERROR] myLoggerError - PID MASTER= 18548
+[2023-01-31T20:50:48.003] [ERROR] myLoggerError - PID MASTER= 27076
+[2023-01-31T20:51:12.852] [ERROR] myLoggerError - PID MASTER= 30876
+[2023-01-31T20:52:21.637] [ERROR] myLoggerError - PID MASTER= 35780
+[2023-01-31T20:53:12.900] [ERROR] myLoggerError - PID MASTER= 3708
+[2023-01-31T20:55:57.475] [ERROR] myLoggerError - PID MASTER= 9064
+[2023-01-31T20:57:22.678] [ERROR] myLoggerError - PID MASTER= 28376
+[2023-01-31T21:05:13.583] [ERROR] myLoggerError - PID MASTER= 2128
+[2023-01-31T21:06:13.179] [ERROR] myLoggerError - PID MASTER= 32552
+[2023-01-31T21:06:33.962] [ERROR] myLoggerError - PID MASTER= 8456
+[2023-01-31T21:06:59.248] [ERROR] myLoggerError - PID MASTER= 18152
+[2023-01-31T21:07:52.528] [ERROR] myLoggerError - PID MASTER= 25580
+[2023-01-31T21:08:30.783] [ERROR] myLoggerError - PID MASTER= 27244
+[2023-01-31T21:09:58.031] [ERROR] myLoggerError - PID MASTER= 35680
+[2023-01-31T21:12:17.870] [ERROR] myLoggerError - PID MASTER= 24856
+[2023-01-31T21:13:17.433] [ERROR] myLoggerError - PID MASTER= 19600
+[2023-01-31T21:13:57.026] [ERROR] myLoggerError - PID MASTER= 35436
+[2023-01-31T21:14:25.627] [ERROR] myLoggerError - PID MASTER= 26012
+[2023-01-31T21:14:31.544] [ERROR] myLoggerError - PID MASTER= 27780
+[2023-01-31T21:14:38.040] [ERROR] myLoggerError - PID MASTER= 35124
+[2023-01-31T21:16:12.325] [ERROR] myLoggerError - PID MASTER= 29544
+[2023-01-31T21:21:52.244] [ERROR] myLoggerError - PID MASTER= 1884
+[2023-01-31T21:25:37.228] [ERROR] myLoggerError - PID MASTER= 25104
+[2023-01-31T21:29:39.418] [ERROR] myLoggerError - PID MASTER= 21976
+[2023-01-31T21:30:04.076] [ERROR] myLoggerError - PID MASTER= 14548
+[2023-01-31T21:30:15.445] [ERROR] myLoggerError - PID MASTER= 16720
+[2023-01-31T21:31:55.960] [ERROR] myLoggerError - PID MASTER= 11112
+[2023-01-31T21:32:08.007] [ERROR] myLoggerError - PID MASTER= 17916
+[2023-01-31T21:35:26.202] [ERROR] myLoggerError - PID MASTER= 28912
+[2023-01-31T21:55:12.563] [ERROR] myLoggerError - PID MASTER= 29708
+[2023-01-31T22:05:29.838] [ERROR] myLoggerError - PID MASTER= 13804
+[2023-01-31T22:09:33.983] [ERROR] myLoggerError - PID MASTER= 952
+[2023-01-31T22:16:54.019] [ERROR] myLoggerError - PID MASTER= 11856
+[2023-01-31T22:26:55.998] [ERROR] myLoggerError - PID MASTER= 31660
+[2023-01-31T22:30:14.646] [ERROR] myLoggerError - PID MASTER= 35456
+[2023-01-31T22:32:37.964] [ERROR] myLoggerError - PID MASTER= 14800
+[2023-01-31T22:34:06.353] [ERROR] myLoggerError - PID MASTER= 19656
+[2023-01-31T22:38:47.744] [ERROR] myLoggerError - PID MASTER= 27024
+[2023-01-31T22:39:16.722] [ERROR] myLoggerError - PID MASTER= 24940
+[2023-01-31T22:42:27.702] [ERROR] myLoggerError - PID MASTER= 22980
+[2023-01-31T22:45:53.312] [ERROR] myLoggerError - PID MASTER= 18968
+[2023-01-31T22:47:17.315] [ERROR] myLoggerError - PID MASTER= 35692
+[2023-01-31T22:48:31.590] [ERROR] myLoggerError - PID MASTER= 26848
+[2023-01-31T22:49:09.225] [ERROR] myLoggerError - PID MASTER= 26356
+[2023-01-31T22:50:43.767] [ERROR] myLoggerError - PID MASTER= 35136
+[2023-01-31T22:54:35.329] [ERROR] myLoggerError - PID MASTER= 33292
+[2023-01-31T22:55:33.214] [ERROR] myLoggerError - PID MASTER= 25032
+[2023-01-31T22:59:15.894] [ERROR] myLoggerError - PID MASTER= 35460
+[2023-01-31T23:00:10.038] [ERROR] myLoggerError - PID MASTER= 28104
+[2023-01-31T23:04:59.944] [ERROR] myLoggerError - PID MASTER= 15936
+[2023-01-31T23:08:10.133] [ERROR] myLoggerError - PID MASTER= 35412
+[2023-01-31T23:08:27.243] [ERROR] myLoggerError - PID MASTER= 25780
+[2023-01-31T23:08:48.925] [ERROR] myLoggerError - PID MASTER= 18852
+[2023-01-31T23:09:05.182] [ERROR] myLoggerError - PID MASTER= 33132
+[2023-01-31T23:09:13.242] [ERROR] myLoggerError - PID MASTER= 26012
+[2023-01-31T23:12:42.902] [ERROR] myLoggerError - PID MASTER= 17308
+[2023-01-31T23:13:22.271] [ERROR] myLoggerError - PID MASTER= 31352
