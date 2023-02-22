@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "test:win": "set NODE_OPTIONS=--experimental-vm-modules && npx jest"
   },
   "keywords": [],
   "author": "",
