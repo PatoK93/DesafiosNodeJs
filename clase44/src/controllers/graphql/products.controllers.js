@@ -16,7 +16,7 @@ export async function getAllProductsController() {
   return allProdcuts;
 }
 
-export async function updateProductByIdController(data) {
+export async function updateProductByIdController({ data }) {
   const { id, title, description, code, photo, value, stock } = data;
   const product = await updateProductById(
     id,
